@@ -1,27 +1,30 @@
+// app/layout.tsx
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Header from './Header'
-import Footer from './Footer'
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'IM Solutions',
-  description: 'Your Gain Our Success',
+  description: 'Your trusted marketing partner',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen px-4 py-8">{children}</main>
-        <Footer />
+      <body>
+        <nav className="bg-blue-900 text-white p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <Link href="/" className="text-xl font-bold">
+              <img src="/logo.png" alt="IM Solutions Logo" className="h-10 inline" />
+            </Link>
+            <ul className="flex space-x-6 font-semibold">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="#services">Services</Link></li>
+              <li><Link href="#about">About</Link></li>
+              <li><Link href="#contact">Contact</Link></li>
+            </ul>
+          </div>
+        </nav>
+        <main>{children}</main>
       </body>
     </html>
   )
